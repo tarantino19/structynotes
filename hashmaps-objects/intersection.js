@@ -16,6 +16,8 @@ const intersection = (a, b) => {
   // return result;
 
   //includes
+  //
+  // when i need a list of results, that's whne i usually need an array (and ill most likely use push method as well)
 
   const result = [];
 
