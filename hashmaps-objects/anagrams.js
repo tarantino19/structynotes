@@ -16,6 +16,14 @@ const anagrams = (s1, s2) => {
     charCount1[char] = (charCount1[char] || 0) + 1;
   }
 
+//left becomes key, value is right
+// bracket notiation assign as key naturally in js m then after = is the value
+//
+// You need to use charCount1[char] || 0 precisely because you don't want to just "start with zero" for every character every time it's encountered.
+// The purpose of charCount1[char] = (charCount1[char] || 0) + 1; is to:
+// Initialize the count for a character when it's first seen.
+// Increment the existing count for a character when it's seen again.
+
   //this is how you populate an object
 
   // Second loop: Populate charCount2 for string s2
