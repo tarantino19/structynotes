@@ -1,7 +1,5 @@
 const palindrome = (s) => {
-  // todo
-  //
-  if (s.length <= 1 || s.length === 1){
+  if (s.length <= 1){
     return true
   }
 
