@@ -22,10 +22,14 @@ node1.next = node2;
 
 // jason -> leneli
 
+//find base case = usually null
+// initialize head with current
+// make the while loop - apply loguc - current.val usually goes first before current.next
+// which is inutuliazing the next value in the next loop
 
 
 const linkedListFind = (head, target) => {
-  let current = head  //initialization
+    let current = head  //initialization
 
   while (current !== null){
     if (current.val === target){
