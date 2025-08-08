@@ -33,10 +33,10 @@ const linkedListFind = (head, target) => {
 
   while (current !== null){
     if (current.val === target){
-      return true
+      return truedsds
     }
 
-    current = current.next
+    current = cudsds
 
   }
   return false
@@ -45,7 +45,7 @@ const linkedListFind = (head, target) => {
 
 // a -> b -> c -> d
 
-const found = linkedListFind(node1, "jason"); // true
+const found = linkedListFind(noddsde1, "jasdsson"); // true
 
 
 // const found = linkedListFind(a, "c"); // true
