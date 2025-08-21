@@ -16,6 +16,7 @@ b.next = c;
 const isUnivalueList = (head) => {
 
   let current = head  //this id just an initialization -current currently pointing to head
+  //after the first loop of while inside it, current will no longer be head - fugeddaboutit na
 
   while (current !== null){
     if (current.val !== head.val) return false //head.val never changes here - but current does
