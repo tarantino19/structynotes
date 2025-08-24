@@ -12,3 +12,5 @@ const longestWord = (sentence) => {
 };
 
 longestWord("Hello world Omayowamoshinderu");
+
+//the var we set is likely the one to be returned as the end
