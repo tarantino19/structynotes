@@ -1,59 +1,49 @@
-
+//how to find the base case? - find smallest
+//  The base case is the point at which this goal is fulfilled for the simplest input.
+// find sub problems - > shrink problem size - [many] -> [empty array return 0]
+// base case is smallest sub problem
+//add function notation like   sum([arrays heres]), sum([empty array here])
+//e.g. grab first array - add remaining
+//
 const sumNumbersRecursive = (numbers) => {
-  // todo
-  // console.log('red')
-  // Write a function sumNumbersRecursive that takes in an array of
-  // numbers and returns the sum of all the numbers in the array.
-  // All elements will be integers. Solve this recursively.
-//find sub problems
-//base case is zero
-//take first element and add to recursive call of remaining elements
-// n = array length
-// always +1 functional call than number of elements
-//array has to be sliced  - sliced size gets deeper
-// /base case or ending is where we begin our if - when will the recursion stop?
-// log final result outside of the function
-
-if (numbers.length === 0){
-  return 0
-}
-
-return numbers[0] + sumNumbersRecursive(numbers.slice(1))
-//slice remove first element (0) then return only elements after that (1 as startswith)
-
+  if (numbers.length === 0){
+      return 0
+  }
+  return numbers[0] + sumNumbersRecursive(numbers.slice(1))
 };
 
-//number of recursive calls for time complexity
-
-const recur = sumNumbersRecursive([5, 2, 9, 10]); // -> 26
-console.log(recur)
+//each slice gets a new array - and then numbers[0] gets the first property of that new array
 
 
-// Recursive Step: The recursive step is where the function calls itself with a modified input, moving closer to the base case. In your code:
+//the slice is the key here
+//
+// but why does the numbers[0] changes after every recursion when were not doing a loop
 
-// JavaScript
 
-// return numbers[0] + sumNumbersRecursive(numbers.slice(1));
-// It takes the first element (numbers[0]).
+// That's an excellent question that gets to the heart of how recursion works without a traditional loop.
 
-// It then calls sumNumbersRecursive again, but this time with a smaller array (numbers.slice(1)), which is the original array without its first element.
+// The reason numbers[0] "changes" is because each recursive call creates a new, independent execution context with its own set of arguments. When you call sumNumbersRecursive(numbers.slice(1)), you aren't modifying the original numbers array. Instead, you're passing a new array to the next function call.
 
-// Let's trace an example: sumNumbersRecursive([1, 2, 3])
+// Let's break down the process step by step:
 
-// Call 1: sumNumbersRecursive([1, 2, 3])
+// Initial Call: sumNumbersRecursive([1, 2, 3, 4])
 
-// numbers.length is not 0.
+// This function call has its own copy of the numbers array: [1, 2, 3, 4].
 
-// It returns 1 + sumNumbersRecursive([2, 3])
+// It takes numbers[0], which is 1.
 
-// Call 2: sumNumbersRecursive([2, 3])
+// It then calls the next instance of the function, passing a new array created by slice(1), which results in [2, 3, 4].
 
-// numbers.length is not 0.
+// Next Call: sumNumbersRecursive([2, 3, 4])
 
-n summary, a recursive function "loops" by:
+// This is a completely separate function call. It has its own, new numbers array: [2, 3, 4].
 
-Making repeated calls to itself.
+// It takes its own numbers[0], which is now 2.
 
-Modifying its input in each call to move closer to the base case.
+// It calls the next instance with [3, 4].
 
-Having a clearly defined base case that stops the recursion and provides a known starting point for the return values to propagate back up the call stack.
+// And so on...
+
+// Each successive call receives a new, shorter array, and thus, its numbers[0] is a different element from the original array.
+
+// Think of it like a relay race. . The first runner (function call) takes the baton (the array) and runs a short distance. Instead of running the whole race, they hand a new, shorter baton (the sliced array) to the next runner. Each runner is a separate instance, and the element they grab from their baton is the "first element" for their leg of the race. The race only finishes when the last runner gets an empty baton (the base case).

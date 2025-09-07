@@ -1,3 +1,26 @@
+
+//recursion basics - countdown
+
+const countdown = (n) => {
+  if (n === 0) return
+
+  console.log(n)
+  countdown(n-1)
+  console.log(n)
+}
+
+countdown(5)
+
+//find base case = make sure ill always eventually hit my base case
+//recursion is what should happen every loop while condition isn't met yet -  It's the action that brings the function closer to the base case.
+// This is incorrect. The second console.log is on the call stack, waiting to be executed. The call stack holds all the "paused" functions, and they will resume in a last-in, first-out (LIFO) order.
+//The second console.log will only run after the nested recursive call (countdown(n-1)) has fully completed and the function is "unwinding."
+
+
+// ------ new notes above ----
+
+
+
 //function that makes a call to itself
 //
 //
@@ -9,15 +32,15 @@
 //
 //
 
-const countdown = (n) => {
-  if (n == 0){
-    return
-  }
-  console.log(n)
-  countdown(n - 1)
-}
+// const countdown = (n) => {
+//   if (n == 0){
+//     return
+//   }
+//   console.log(n)
+//   countdown(n - 1)
+// }
 
-countdown(8)
+// countdown(8)
 
 
 
@@ -43,20 +66,19 @@ countdown(8)
 //     at console.log (node:internal/console/constructor:384:61)
 //     at countdown (/Users/tarantino/Desktop/structy/index.js:5:11)
 //     at countdown (/Users/tarantino/Desktop/structy/index.js:6:3)
-const countdown = (n) => {
-  if (n == 0){
-    return
-  }
-  console.log(n)
-  countdown(n - 1)
-  console.log(n)
-}
+// const countdown = (n) => {
+//   if (n == 0){
+//     return
+//   }
+//   console.log(n)
+//   countdown(n - 1)
+//   console.log(n)
+// }
 
-//if we put console logs after recursive call it will be reverse
+// //if we put console logs after recursive call it will be reverse
 
-countdown(5)
+// countdown(5)
 
 // The console.log(n) before the recursive call prints the numbers in descending order (5, 4, 3, 2, 1) as the function calls are being made.
 
 // The console.log(n) after the recursive call prints the numbers in ascending order (1, 2, 3, 4, 5) as the function calls are returning and unwinding from the call stack. Each function call "pauses" at the recursive call, and only continues to the second console.log once the deeper recursive calls have fully completed and returned. The deepest call (countdown(1)) is the first to complete its recursive part and therefore the first to execute its final console.log(n), which prints 1.
-'
